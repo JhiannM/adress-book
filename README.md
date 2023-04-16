@@ -1,3 +1,56 @@
+# Address Book
+Address Book es un proyecto para almacenar clientes en una libreta de contactos. Se utiliza ReactJS para desarrollar la interfaz, Bootstrap como plantilla de estilos, y LocalStorage para almacenar de forma temporal los datos de la libreta. Además, se utiliza Axios para obtener un listado de inicial de contactos y WebSocket para escuchar eventos en tiempo real.
+
+# Prerrequisitos
+Para utilizar Address Book es necesario tener instalado en tu computador NodeJs y Git.
+
+# Instalación
+1. Clonar el repositorio:
+    git clone https://github.com/tu-usuario/address-book.git
+2. Instalar las dependencias:
+    ejecutando el siguiente comando: npm install
+3. Iniciar la aplicacion:
+    ejecutando el siguiente comando: npm start
+
+# Librerías utilizadas
+Bootstrap
+ReactJS
+Axios
+WebSocket
+
+# Estructura de direcctorios de la aplicacion 
+
+address-book/
+├── node_modules/
+├── public/
+│   ├── index.html
+│   ├── favicon.ico
+│   └── manifest.json
+├── src/
+│   ├── components/
+│   │   ├── Contact.js
+│   │   ├── ContactForm.js
+│   │   ├── ContactList.js
+│   │   └── WebSocket.js
+│   ├── App.js
+│   ├── index.js
+│   └── serviceWorker.js
+├── .gitignore
+├── package.json
+├── README.md
+└── yarn.lock
+
+# Tipos de eventos recibidos por el websocket
+La aplicación escucha el canal address-book del WebSocket wss://wstest.technisupport.co/app/testws y recibe los siguientes eventos:
+
+contact-created: 
+    se recibe cuando se crea un nuevo contacto. El evento contiene la información del contacto creado.
+contact-updated: 
+    se recibe cuando se actualiza un contacto existente. El evento contiene la información del contacto actualizado.
+contact-deleted: 
+    se recibe cuando se elimina un contacto existente. El evento contiene la información del contacto eliminado.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,43 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <title>Adress Book</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div class="container-fluid bg-primary">
+      <h1 class="text-light">Adress Book</h1>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 pt-1 pb-3">
+          <button type="button" class="btn btn-primary" id="newContact" data-bs-toggle="modal" data-bs-target="#modalRegistro">
+            <i class="bi bi-person-add"></i> Nuevo contacto
+          </button>
+        </div>
+        <!-- <hr class="border border-primary border-3 opacity-75"> -->
+        <div class="col-12">
+          <h2>Contactos registrados</h2>
+          <hr class="border border-primary border-3 opacity-75">
+          <table class="table" id="infoContactos">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <!-- MODAL CONTENEDOR DEL FORMULARIO DE REGISTRO DE CONTACTO -->
+    <div class="modal fade" id="modalRegistro" tabindex="-1" aria-labelledby="modalRegistroLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="nuevoC">Registro de nuevo contacto</h5>
+            <h5 class="modal-title visually-hidden" id="editarC">Editar contacto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="registroContacto" novalidate>
+              <div class="col-12">
+                <label for="validacionNombre" class="form-label fw-bold">Nombre</label>
+                <input type="text" class="form-control" id="validacionNombre" required>
+                <div class="valid-feedback">
+                  ¡Se ve bien!
+                </div>
+                <div class="invalid-feedback">
+                  Este campo no puede estar vacio.
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="validacionApellido" class="form-label fw-bold">Apellido</label>
+                <input type="text" class="form-control" id="validacionApellido" required>
+                <div class="valid-feedback">
+                  ¡Se ve bien!
+                </div>
+                <div class="invalid-feedback">
+                  Este campo no puede estar vacio.
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="validacionTelefono" class="form-label fw-bold">Teléfono</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-telephone"></i></span>
+                  <input type="tel" class="form-control" id="validacionTelefono" aria-describedby="inputGroupPrepend" required>
+                  <div class="valid-feedback">
+                    ¡Se ve bien!
+                  </div>
+                  <div class="invalid-feedback">
+                    Este campo no puede estar vacio.
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="validacionDireccion" class="form-label fw-bold">Direccion</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text" id="inputGroupPrepend2"><i class="bi bi-signpost"></i></span>
+                  <input type="text" class="form-control" id="validacionDireccion" aria-describedby="inputGroupPrepend2" required>
+                  <div class="valid-feedback">
+                    ¡Se ve bien!
+                  </div>
+                  <div class="invalid-feedback">
+                    Este campo no puede estar vacio.
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" id="saveContacto">
+              <i class="bi bi-save2"></i> Guardar
+            </button>
+            <button type="button" class="btn btn-primary visually-hidden" id="actContacto">
+              <i class="bi bi-person-up"></i> Actualizar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
