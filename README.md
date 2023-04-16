@@ -1,22 +1,37 @@
 # Address Book
-Address Book es un proyecto para almacenar clientes en una libreta de contactos. Se utiliza ReactJS para desarrollar la interfaz, Bootstrap como plantilla de estilos, y LocalStorage para almacenar de forma temporal los datos de la libreta. Además, se utiliza Axios para obtener un listado de inicial de contactos y WebSocket para escuchar eventos en tiempo real.
-
-# Prerrequisitos
-Para utilizar Address Book es necesario tener instalado en tu computador NodeJs y Git.
+Este código es una aplicación para la creación de contactos en una libreta de direcciones utilizando diversas tecnologías como Axios para realizar peticiones HTTP a una API, SweetAlert para mostrar alertas al usuario, Bootstrap para estilos y DataTables para la visualización de los datos. También se encuentra comentado el uso de Pusher para la comunicación en tiempo real entre los usuarios de la aplicación.
 
 # Instalación
 1. Clonar el repositorio:
-    git clone https://github.com/tu-usuario/address-book.git
+    git clone https://github.com/JhiannM/adress-book.git
 2. Instalar las dependencias:
     ejecutando el siguiente comando: npm install
 3. Iniciar la aplicacion:
     ejecutando el siguiente comando: npm start
 
 # Librerías utilizadas
-Bootstrap
-ReactJS
-Axios
-WebSocket
+bootstrap: se utiliza para los estilos de la aplicación.
+bootstrap-icons: se utiliza para incluir iconos en la interfaz de usuario.
+axios: se utiliza para realizar peticiones HTTP a una API.
+jquery: se utiliza para el manejo de eventos y el acceso al DOM.
+datatables.net-dt: se utiliza para la visualización de los datos.
+sweetalert2: se utiliza para mostrar alertas al usuario.
+Funcionalidad
+La aplicación realiza una petición HTTP a una API, utilizando Axios, para obtener los contactos guardados en el servidor. Estos contactos se guardan en el Local Storage del navegador para poder acceder a ellos posteriormente sin necesidad de hacer una petición HTTP cada vez que se necesiten.
+
+Una vez cargados los datos, se utiliza DataTables para mostrarlos en una tabla. Además, se incluye la posibilidad de agregar nuevos contactos a través de un formulario.
+
+Al agregar un nuevo contacto, se verifica si el contacto ya existe en el Local Storage. Si el contacto ya existe, se muestra una alerta al usuario y no se hace nada. Si el contacto no existe, se agrega a la API utilizando Axios y se actualiza el Local Storage.
+
+# Comentarios adicionales
+En el código se incluye el uso de Pusher para la comunicación en tiempo real entre los usuarios de la aplicación, pero se encuentra comentado debido a que se necesita configurar una cuenta de Pusher para utilizarlo. Si se desea utilizar esta funcionalidad, se debe descomentar el código y agregar las credenciales de la aplicación Pusher correspondiente.
+
+# La estructura de directorios de la aplicación es la siguiente:
+
+src: Contiene los archivos de código fuente de la aplicación.
+components: Contiene los componentes de React utilizados en la aplicación.
+services: Contiene el archivo para consumir la API utilizando Axios y almacenar los datos en localStorage.
+websocket: Contiene el archivo para conectarse al WebSocket utilizando Pusher y escuchar los eventos.
 
 # Estructura de direcctorios de la aplicacion 
 
@@ -40,84 +55,8 @@ address-book/
 ├── README.md
 └── yarn.lock
 
-# Tipos de eventos recibidos por el websocket
-La aplicación escucha el canal address-book del WebSocket wss://wstest.technisupport.co/app/testws y recibe los siguientes eventos:
+# Los tipos de eventos recibidos por el WebSocket son los siguientes:
 
-contact-created: 
-    se recibe cuando se crea un nuevo contacto. El evento contiene la información del contacto creado.
-contact-updated: 
-    se recibe cuando se actualiza un contacto existente. El evento contiene la información del contacto actualizado.
-contact-deleted: 
-    se recibe cuando se elimina un contacto existente. El evento contiene la información del contacto eliminado.
-
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+pusher:subscription_succeeded: Este evento se recibe cuando se ha suscrito correctamente a un canal de Pusher.
+pusher:subscription_error: Este evento se recibe cuando ocurre un error al suscribirse a un canal de Pusher.
+address-book: Este evento se recibe cuando se actualiza la libreta de direcciones en el servidor.
